@@ -48,7 +48,7 @@ class Utils:
     }
 
     dictOfNodes = {
-        NODEA : dictA,
+        NODEA: dictA,
         NODEB: dictB,
         NODEC: dictC,
         NODED: dictD,

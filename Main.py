@@ -132,6 +132,13 @@ def transformToNetworkGraph(graph : Graph.Graph):
         print(list(netGraph.nodes()))
         '''
 
+        '''
+        #--> Definicao agora das arestas existentes
+            #--> Explicação do Significado de Weighted Edges
+        '''
+
+        netGraph.add_edges_from()
+
         return netGraph
     except TypeError:
         print("An Error Occured")

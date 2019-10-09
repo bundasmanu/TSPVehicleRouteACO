@@ -176,7 +176,12 @@ def main():
 
     #--> Definicao do algoritmo, recorrendo à biblioteca acopy
 
-    
+    solver = acopy.Solver(rho=.03, q=1) #--> Da para definir plugins adicionais criados por mim
+    colony = acopy.Colony(alpha=1, beta=3)
+
+    #Aplicar o Algoritmo, para resolver o problema
+    tour= solver.solve(myNetworkGraph, colony, gen_size=10, limit=100) #--> 10 formigas por Nodo, e 100 iteracoes
+    print(tour.cost)
 
 if __name__ == "__main__":
     main()

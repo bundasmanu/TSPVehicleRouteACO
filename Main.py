@@ -1,4 +1,6 @@
 import acopy
+from sklearn.ensemble import weight_boosting
+
 import Utils
 import networkx as nx
 import Graph,Node,Edge
@@ -128,7 +130,7 @@ def transformToNetworkGraph(graph : Graph.Graph):
         netGraph.add_nodes_from(nodes_for_adding=nodesNames)
 
         '''
-        # Confirmação nós do grafo
+        #--> Confirmação nós do grafo
         print(list(netGraph.nodes()))
         '''
 
@@ -137,7 +139,14 @@ def transformToNetworkGraph(graph : Graph.Graph):
             #--> Explicação do Significado de Weighted Edges
         '''
 
-        netGraph.add_edges_from()
+        for i in range(len(graph.getNodes())):
+            for j in range(len(graph.getNodes()[i].getEdges())):
+                netGraph.add_edge(graph.getNodes()[i].getEdges()[j].getPInicial(),graph.getNodes()[i].getEdges()[j].getPFinal(), weight=graph.getNodes()[i].getEdges()[j].getDistance())
+
+        '''
+        #--> Confirmação arestas do grafo
+        print(list(netGraph.edges()))
+        '''
 
         return netGraph
     except TypeError:
@@ -148,7 +157,6 @@ def main():
 
     print(Utils.Utils.dictOfNodes)
     grafo = createGraph()
-    myNetworkGraph = transformToNetworkGraph(grafo)
 
     '''
     # Confirmacao do grafo, verificar se está tudo ok
@@ -157,6 +165,18 @@ def main():
         for j in range(len(grafo.getNodes()[i].getEdges())):
             print(grafo.getNodes()[i].getEdges()[j].getPInicial()+"\t"+grafo.getNodes()[i].getEdges()[j].getPFinal()+"\n")
     '''
+
+    #--> Transformacao do grafo em networkx Grafo
+    myNetworkGraph = transformToNetworkGraph(grafo)
+
+    '''
+    #--> Listagem interessante das edges
+    print(myNetworkGraph.edges().data())
+    '''
+
+    #--> Definicao do algoritmo, recorrendo à biblioteca acopy
+
+    
 
 if __name__ == "__main__":
     main()

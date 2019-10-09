@@ -116,10 +116,40 @@ def createGraph():
 
     return grafo
 
+def transformToNetworkGraph(graph : Graph.Graph):
+
+    try:
+
+        if graph is None :
+            raise TypeError
+
+        netGraph = nx.Graph()
+        nodesNames = [graph.getNodes()[i].getName() for i in range(len(graph.getNodes()))]
+        netGraph.add_nodes_from(nodes_for_adding=nodesNames)
+
+        '''
+        # Confirmação nós do grafo
+        print(list(netGraph.nodes()))
+        '''
+
+        return netGraph
+    except TypeError:
+        print("An Error Occured")
+        return None
+
 def main():
 
     print(Utils.Utils.dictOfNodes)
     grafo = createGraph()
+    myNetworkGraph = transformToNetworkGraph(grafo)
+
+    '''
+    # Confirmacao do grafo, verificar se está tudo ok
+    for i in range(len(grafo.getNodes())) :
+        print("\n"+grafo.getNodes()[i].getName())
+        for j in range(len(grafo.getNodes()[i].getEdges())):
+            print(grafo.getNodes()[i].getEdges()[j].getPInicial()+"\t"+grafo.getNodes()[i].getEdges()[j].getPFinal()+"\n")
+    '''
 
 if __name__ == "__main__":
     main()

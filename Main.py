@@ -140,7 +140,7 @@ def transformToNetworkGraph(graph : Graph.Graph):
         '''
 
         for i in range(len(graph.getNodes())):
-            for j in range(len(graph.getNodes()[i].getEdges())):
+            for j in range(i,len(graph.getNodes()[i].getEdges())):
                 netGraph.add_edge(graph.getNodes()[i].getEdges()[j].getPInicial(),graph.getNodes()[i].getEdges()[j].getPFinal(), weight=graph.getNodes()[i].getEdges()[j].getDistance())
 
         '''
@@ -180,8 +180,10 @@ def main():
     colony = acopy.Colony(alpha=1, beta=3)
 
     #Aplicar o Algoritmo, para resolver o problema
-    tour= solver.solve(myNetworkGraph, colony, gen_size=10, limit=100) #--> 10 formigas por Nodo, e 100 iteracoes
+    tour= solver.solve(myNetworkGraph, colony, gen_size=100, limit=400) #--> 10 formigas por Nodo, e 100 iteracoes
     print(tour.cost)
+    print(tour.nodes)
+    print(tour.path)
 
 if __name__ == "__main__":
     main()

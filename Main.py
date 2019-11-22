@@ -1,9 +1,10 @@
 import acopy
-from sklearn.ensemble import weight_boosting
-
 import Utils
 import networkx as nx
 import Graph,Node,Edge
+import pyswarms as ps
+import PSO
+import numpy
 
 def createGraph():
 
@@ -159,6 +160,10 @@ def main():
     grafo = createGraph()
 
     '''
+        APLICACAO ANT COLONY OPTIMIZATION
+    '''
+
+    '''
     # Confirmacao do grafo, verificar se está tudo ok
     for i in range(len(grafo.getNodes())) :
         print("\n"+grafo.getNodes()[i].getName())
@@ -177,13 +182,26 @@ def main():
     #--> Definicao do algoritmo, recorrendo à biblioteca acopy
 
     solver = acopy.Solver(rho=.03, q=1) #--> Da para definir plugins adicionais criados por mim
-    colony = acopy.Colony(alpha=1, beta=3)
+    colony = acopy.Colony(alpha=1, beta=1)
 
     #Aplicar o Algoritmo, para resolver o problema
-    tour= solver.solve(myNetworkGraph, colony, gen_size=100, limit=400) #--> 10 formigas por Nodo, e 100 iteracoes
+    tour= solver.solve(myNetworkGraph, colony, gen_size=400, limit=400) #--> 10 formigas por Nodo, e 100 iteracoes
     print(tour.cost)
     print(tour.nodes)
     print(tour.path)
+
+
+    '''
+        APLICACAO DO PARTICLE SWARM OPTIMIZATION
+    '''
+
+    optionsSwarmAlgorithm = {'c1': 1.2, 'c2': 1.2, 'w': 0.9}
+    dimensions = len(grafo.getNodes())
+    limites = (numpy.array([0,0,0,0,0]), numpy.array([1,1,1,1,1]))
+    optimizer = ps.single.GlobalBestPSO(n_particles=10, dimensions=dimensions, options=optionsSwarmAlgorithm, bounds=limites)
+
+    cost, pos = optimizer.optimize(PSO.aplicarFuncaoObjetivoTodasParticulas, 10, graph=grafo)
+    print(cost)
 
 if __name__ == "__main__":
     main()

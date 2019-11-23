@@ -5,6 +5,7 @@ import Graph,Node,Edge
 import pyswarms as ps
 import PSO
 import numpy
+import tsplib95
 
 def createGraph():
 
@@ -185,7 +186,7 @@ def main():
     colony = acopy.Colony(alpha=1, beta=1)
 
     #Aplicar o Algoritmo, para resolver o problema
-    tour= solver.solve(myNetworkGraph, colony, gen_size=400, limit=400) #--> 10 formigas por Nodo, e 100 iteracoes
+    tour= solver.solve(myNetworkGraph, colony, gen_size=20, limit=200) #--> 10 formigas por Nodo, e 100 iteracoes
     print(tour.cost)
     print(tour.nodes)
     print(tour.path)
@@ -202,6 +203,16 @@ def main():
 
     cost, pos = optimizer.optimize(PSO.aplicarFuncaoObjetivoTodasParticulas, 10, graph=grafo)
     print(cost)
+
+    '''
+        LEITURA TSPLIB FILE --> TSP PROBLEM 21 
+    '''
+    problem = tsplib95.load_problem('gr21.tsp')
+    problem.special = Utils.euclidean_jitter
+
+    tspLibGraph = problem.get_graph()
+    print(tspLibGraph.edges(1))
+
 
 if __name__ == "__main__":
     main()

@@ -1,5 +1,6 @@
-from typing import List
-import Main
+import random
+import math
+from tsplib95 import distances
 
 class Utils:
 
@@ -55,3 +56,7 @@ class Utils:
         NODED: dictD,
         NODEE: dictE,
     }
+
+def euclidean_jitter(a, b):
+    dist = distances.euclidean(a, b) # works for n-dimensions
+    return dist * random.random() * 2

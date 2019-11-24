@@ -67,3 +67,5 @@ ValueError: shape mismatch: objects cannot be broadcast to a single shape
 2019-11-23 00:20:45,011 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 20.0, best pos: [0.96346751 0.08649607 0.4268754  0.26354526 0.70564976]
 2019-11-23 00:21:39,547 - pyswarms.single.global_best - INFO - Optimize for 10 iters with {'c1': 1.2, 'c2': 1.2, 'w': 0.9}
 2019-11-23 00:21:39,569 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 20.0, best pos: [0.89583478 0.15692819 0.42919327 0.28593279 0.76518235]
+2019-11-24 19:57:28,217 - pyswarms.single.global_best - INFO - Optimize for 10 iters with {'c1': 1.2, 'c2': 1.2, 'w': 0.9}
+2019-11-24 19:57:28,247 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 19.0, best pos: [0.91761536 0.04396552 0.68910065 0.38486172 0.45750674]

@@ -213,6 +213,11 @@ def main():
     tspLibGraph = problem.get_graph()
     print(tspLibGraph.edges(1))
 
+    tour= solver.solve(tspLibGraph, colony, gen_size=200, limit=200) #--> 10 formigas por Nodo, e 100 iteracoes
+    print(tour.cost)
+    print(tour.nodes)
+    print(tour.path)
+
 
 if __name__ == "__main__":
     main()

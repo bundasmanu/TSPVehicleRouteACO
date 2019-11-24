@@ -1,6 +1,7 @@
 acopy==0.6.4
 attrs==19.1.0
 click==6.7
+cspy==0.0.8
 cycler==0.10.0
 decorator==4.4.0
 future==0.17.1

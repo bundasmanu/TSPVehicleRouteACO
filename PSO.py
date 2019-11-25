@@ -2,22 +2,22 @@ import networkx as nx
 import Graph,Node,Edge
 import numpy
 
-def valueToPredict(value):
+def valueToPredict(value, numberNodes):
 
-    if value <= 0.2:
-        return 'A'
-    elif value > 0.2 and value <= 0.4:
-        return 'B'
-    elif value > 0.4 and value <= 0.6:
-        return 'C'
-    elif value > 0.6 and value <= 0.8:
-        return 'D'
-    else:
-        return 'E'
+    #ESTE CODIGO EM PRINCIPIO FUNCIONA
+    val = getSpaceBetweenNodes(numberNodes)
+    initialValue = 65  # ascii number of 'A'
+
+    for i in range(numberNodes):
+        if float((i*val)) < value and value <= float((val * (i+1))):
+            return chr(initialValue+i)
+
+    return 0
+
 
 def getSpaceBetweenNodes(numberNodes):
 
-    return 1/numberNodes #--> Max Boundary é sempre 1, visto que divido por 1, na definicao do espaço entre cada nó do problema
+    return 1 / numberNodes  # --> Max Boundary é sempre 1, visto que divido por 1, na definicao do espaço entre cada nó do problema
 
 def simuleNumpyOfNodeProbabilities(numberNodes):
 
@@ -64,23 +64,8 @@ def costFunction(particles, graph : Graph.Graph):
     spaceBetweenNodes = getSpaceBetweenNodes(len(graph.getNodes()))
 
     nP = len(particles)
-    quantos = -1
-    nValues = 0
-    realCounter = 0
-    firstDimensionValue = particles[0]
 
-    '''for i in range(len(graph.getNodes())):
-        for x in range(nP):
-            quantos = quantos + 1
-            for j in range(nP-quantos):
-                if x != j :
-                    val = abs(particles[x]-particles[j])
-                    if val > spaceBetweenNodes:
-                        nValues = nValues + 1
-                    if nValues == (nP- quantos):
-                        realCounter = realCounter + 1'''
-
-    vals = [valueToPredict(particles[i]) for i in range(nP)]
+    vals = [valueToPredict(particles[i], len(graph.getNodes())) for i in range(nP)]
 
     numberOfErrors = countErrors(vals)
 
@@ -96,17 +81,17 @@ def costFunction(particles, graph : Graph.Graph):
         onlyOnce = onlyOnce + 1
         for j in range(len(numpyArr)):
             if particles[i] < j:
-                vInicial = valueToPredict(particles[i])
+                vInicial = valueToPredict(particles[i], len(graph.getNodes()))
                 nInicial = getSpecificNode(vInicial,graph)
-                vFinal = valueToPredict(particles[i+1])
+                vFinal = valueToPredict(particles[i+1], len(graph.getNodes()))
                 nFinal = getSpecificNode(vFinal, graph)
                 cost = cost + getDistanceTwoNodes(nInicial, nFinal, graph)
                 break
 
 
-    backToInitialNode = valueToPredict(particles[len(particles)-1])
+    backToInitialNode = valueToPredict(particles[len(particles)-1], len(graph.getNodes()))
     finalNode = getSpecificNode(backToInitialNode, graph)
-    backToFinalNode = valueToPredict(particles[0])
+    backToFinalNode = valueToPredict(particles[0], len(graph.getNodes()))
     sourceNode = getSpecificNode(backToFinalNode, graph)
     cost = cost + getDistanceTwoNodes(finalNode, sourceNode, graph)
 

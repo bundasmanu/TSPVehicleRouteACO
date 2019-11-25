@@ -78,16 +78,34 @@ def putAsciiValues(value, numberNodes):
 
 def getConvertedEdges(graph : networkx.Graph):
 
-    convertedEdges = [[0] * (graph.number_of_nodes()-i) for i in range(graph.number_of_nodes())] #--> Desta forma para evitar que as linhas sejam todas a msm referencia --> https://stackoverflow.com/questions/240178/list-of-lists-changes-reflected-across-sublists-unexpectedly
+    convertedEdges = [[] * (graph.number_of_nodes()) for i in range(graph.number_of_nodes())] #--> Desta forma para evitar que as linhas sejam todas a msm referencia --> https://stackoverflow.com/questions/240178/list-of-lists-changes-reflected-across-sublists-unexpectedly
 
     counter = 0
+    counter2 = 0
+
     for i in range(len(graph.nodes)):
         counter = 0
         for u, v, data in graph.edges(data=True):
-            if i == u:
-                itemArgs = { Utils.INITIALPOINT : putAsciiValues(u, graph.number_of_nodes()), Utils.FINALPOINT : putAsciiValues(v, graph.number_of_nodes()), Utils.DISTANCE : data['weight']}
-                convertedEdges[i][counter] = Edge.Edge(**itemArgs)
-                counter = counter + 1
+            if u > i: #SE CHEGOU AO FIM DA LISTAGEM DAS EDGES
+                break
+            elif i == u:
+                if i == v:
+                    itemArgs = {Utils.INITIALPOINT: putAsciiValues(u, graph.number_of_nodes()),
+                                Utils.FINALPOINT: putAsciiValues(v, graph.number_of_nodes()),
+                                Utils.DISTANCE: data['weight']}
+                    convertedEdges[i].append(Edge.Edge(**itemArgs))
+                    counter = counter + 1
+                if i != v:
+                    itemArgs = {Utils.INITIALPOINT: putAsciiValues(u, graph.number_of_nodes()),
+                                Utils.FINALPOINT: putAsciiValues(v, graph.number_of_nodes()),
+                                Utils.DISTANCE: data['weight']}
+                    convertedEdges[i].append(Edge.Edge(**itemArgs))
+                    itemArgs = {Utils.INITIALPOINT: putAsciiValues(v, graph.number_of_nodes()),
+                                Utils.FINALPOINT: putAsciiValues(u, graph.number_of_nodes()),
+                                Utils.DISTANCE: data['weight']}
+                    convertedEdges[v].append(Edge.Edge(**itemArgs))
+            else:
+                continue
 
     return convertedEdges
 

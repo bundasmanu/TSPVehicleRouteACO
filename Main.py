@@ -196,18 +196,18 @@ def main():
         APLICACAO DO PARTICLE SWARM OPTIMIZATION--> 1 PROBLEMA
     '''
 
-    optionsSwarmAlgorithm = {'c1': 1.2, 'c2': 1.2, 'w': 0.9}
+    optionsSwarmAlgorithm = {'c1': 1.6, 'c2': 1.8, 'w': 0.9}
     dimensions = len(grafo.getNodes())
     limites = (numpy.array([0,0,0,0,0]), numpy.array([1,1,1,1,1]))
     optimizer = ps.single.GlobalBestPSO(n_particles=10, dimensions=dimensions, options=optionsSwarmAlgorithm, bounds=limites)
 
-    cost, pos = optimizer.optimize(PSO.aplicarFuncaoObjetivoTodasParticulas, 10, graph=grafo)
+    cost, pos = optimizer.optimize(PSO.aplicarFuncaoObjetivoTodasParticulas, 20, graph=grafo)
     print(cost)
 
     '''
         LEITURA TSPLIB FILE --> TSP PROBLEM 21 
     '''
-    problem = tsplib95.load_problem('gr21.tsp')
+    problem = tsplib95.load_problem('gr17.tsp')
     problem.special = Utils.euclidean_jitter
 
     tspLibGraph = problem.get_graph()
@@ -228,10 +228,17 @@ def main():
 
     convertedGraph = Utils.convertNetworkxToGraphObject(tspLibGraph)
 
-    for i in range(len(convertedGraph.getNodes())) :
-        print("\n"+convertedGraph.getNodes()[i].getName())
-        for j in range(len(convertedGraph.getNodes()[i].getEdges())):
-            print(convertedGraph.getNodes()[i].getEdges()[j].getPInicial()+"\t"+convertedGraph.getNodes()[i].getEdges()[j].getPFinal()+"\n")
+    # for i in range(len(convertedGraph.getNodes())) :
+    #     print("\n"+convertedGraph.getNodes()[i].getName())
+    #     for j in range(len(convertedGraph.getNodes()[i].getEdges())):
+    #         print(convertedGraph.getNodes()[i].getEdges()[j].getPInicial()+"\t"+convertedGraph.getNodes()[i].getEdges()[j].getPFinal()+"\n")
+
+    dimensions = len(convertedGraph.getNodes())
+    limites = (numpy.array([0 for i in range(len(convertedGraph.getNodes()))]), numpy.array([1 for i in range(len(convertedGraph.getNodes()))]))
+    optimizer = ps.single.GlobalBestPSO(n_particles=10000, dimensions=dimensions, options=optionsSwarmAlgorithm, bounds=limites)
+
+    cost, pos = optimizer.optimize(PSO.aplicarFuncaoObjetivoTodasParticulas, 500, graph=convertedGraph)
+    print(cost)
 
 
 if __name__ == "__main__":

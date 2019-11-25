@@ -1,6 +1,9 @@
 import random
 import math
 from tsplib95 import distances
+import networkx
+import Graph, Node, Edge
+from typing import List
 
 class Utils:
 
@@ -60,3 +63,60 @@ class Utils:
 def euclidean_jitter(a, b):
     dist = distances.euclidean(a, b) # works for n-dimensions
     return dist * random.random() * 2
+
+def putAsciiValues(value, numberNodes):
+
+    '''
+    :param value: value of Node
+    :param numberNodes: nº de nós existente no grafo
+    :return: ascii correspondente, começando na letra A--> 1 é A, 2 é B, e por aí fora
+    '''
+
+    initialValue = 65 # ascii number of 'A'
+
+    return chr(initialValue+value)
+
+def getConvertedEdges(graph : networkx.Graph):
+
+    convertedEdges = [[0] * (graph.number_of_nodes()-i) for i in range(graph.number_of_nodes())] #--> Desta forma para evitar que as linhas sejam todas a msm referencia --> https://stackoverflow.com/questions/240178/list-of-lists-changes-reflected-across-sublists-unexpectedly
+
+    counter = 0
+    for i in range(len(graph.nodes)):
+        counter = 0
+        for u, v, data in graph.edges(data=True):
+            if i == u:
+                itemArgs = { Utils.INITIALPOINT : putAsciiValues(u, graph.number_of_nodes()), Utils.FINALPOINT : putAsciiValues(v, graph.number_of_nodes()), Utils.DISTANCE : data['weight']}
+                convertedEdges[i][counter] = Edge.Edge(**itemArgs)
+                counter = counter + 1
+
+    return convertedEdges
+
+def getConvertedNodes(graph : networkx.Graph):
+
+    convertedNodes = [0] * graph.number_of_nodes()
+
+    convertedEdges = getConvertedEdges(graph)
+
+    for i in range(graph.number_of_nodes()):
+        convertedNodes[i] = Node.Node(putAsciiValues(i, graph.number_of_nodes()), convertedEdges[i])
+
+    return convertedNodes
+
+def convertNetworkxToGraphObject(graph : networkx.Graph):
+
+    '''
+
+    :param graph: Networkx Graph
+    :return: Graph Object converted from Networkx Graph
+    '''
+
+    try:
+
+        convertedNodes = getConvertedNodes(graph)
+
+        #CRIACAO DO GRAFO
+        convertedGraph = Graph.Graph(convertedNodes)
+
+        return convertedGraph
+    except:
+        raise

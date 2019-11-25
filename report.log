@@ -69,3 +69,41 @@ ValueError: shape mismatch: objects cannot be broadcast to a single shape
 2019-11-23 00:21:39,569 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 20.0, best pos: [0.89583478 0.15692819 0.42919327 0.28593279 0.76518235]
 2019-11-24 19:57:28,217 - pyswarms.single.global_best - INFO - Optimize for 10 iters with {'c1': 1.2, 'c2': 1.2, 'w': 0.9}
 2019-11-24 19:57:28,247 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 19.0, best pos: [0.91761536 0.04396552 0.68910065 0.38486172 0.45750674]
+2019-11-24 22:26:48,546 - pyswarms.single.global_best - INFO - Optimize for 10 iters with {'c1': 1.2, 'c2': 1.2, 'w': 0.9}
+2019-11-24 22:26:48,574 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 20.0, best pos: [0.52556072 0.92775699 0.67324682 0.08405361 0.31501727]
+2019-11-24 23:31:57,241 - pyswarms.single.global_best - INFO - Optimize for 10 iters with {'c1': 1.2, 'c2': 1.2, 'w': 0.9}
+2019-11-24 23:31:57,263 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 19.0, best pos: [0.57506705 0.90505794 0.03334746 0.29437707 0.70783442]
+2019-11-24 23:36:26,019 - pyswarms.single.global_best - INFO - Optimize for 10 iters with {'c1': 1.2, 'c2': 1.2, 'w': 0.9}
+2019-11-24 23:36:26,042 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 18.0, best pos: [0.83573914 0.13390642 0.32141576 0.47604757 0.6247176 ]
+2019-11-24 23:37:56,021 - pyswarms.single.global_best - INFO - Optimize for 10 iters with {'c1': 1.2, 'c2': 1.2, 'w': 0.9}
+2019-11-24 23:37:56,044 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 21.0, best pos: [0.22275072 0.71460151 0.06740436 0.97420138 0.57887287]
+2019-11-24 23:39:10,131 - pyswarms.single.global_best - INFO - Optimize for 10 iters with {'c1': 1.2, 'c2': 1.2, 'w': 0.9}
+2019-11-24 23:39:10,158 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 20.0, best pos: [0.327116   0.12670999 0.68808997 0.99503984 0.58861911]
+2019-11-24 23:39:21,644 - pyswarms.single.global_best - INFO - Optimize for 10 iters with {'c1': 1.2, 'c2': 1.2, 'w': 0.9}
+2019-11-24 23:39:21,702 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 22.0, best pos: [0.88233376 0.71122386 0.20012353 0.02762938 0.44629317]
+2019-11-24 23:43:33,954 - pyswarms.single.global_best - INFO - Optimize for 10 iters with {'c1': 1.2, 'c2': 1.2, 'w': 0.9}
+2019-11-24 23:43:33,976 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 512.0, best pos: [0.41978733 0.8974125  0.04664777 0.22177388 0.52724655]
+2019-11-24 23:44:40,931 - pyswarms.single.global_best - INFO - Optimize for 10 iters with {'c1': 1.2, 'c2': 1.2, 'w': 0.9}
+2019-11-24 23:44:40,985 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 19.0, best pos: [0.52360713 0.84438176 0.1748584  0.66948028 0.36817518]
+2019-11-24 23:47:36,286 - pyswarms.single.global_best - INFO - Optimize for 10 iters with {'c1': 1.2, 'c2': 1.2, 'w': 0.9}
+2019-11-24 23:47:36,341 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 19.0, best pos: [0.35818753 0.62145249 0.52800309 0.87231018 0.14052285]
+2019-11-24 23:51:40,164 - pyswarms.single.global_best - INFO - Optimize for 10 iters with {'c1': 1.2, 'c2': 1.2, 'w': 0.9}
+2019-11-24 23:51:40,187 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 21.0, best pos: [0.18176823 0.83803817 0.4002481  0.72410696 0.31706808]
+2019-11-24 23:53:01,736 - pyswarms.single.global_best - INFO - Optimize for 10 iters with {'c1': 1.2, 'c2': 1.2, 'w': 0.9}
+2019-11-24 23:53:01,790 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 20.0, best pos: [0.83519345 0.18536996 0.46358313 0.26246253 0.73580433]
+2019-11-24 23:57:34,486 - pyswarms.single.global_best - INFO - Optimize for 10 iters with {'c1': 1.2, 'c2': 1.2, 'w': 0.9}
+2019-11-24 23:57:34,508 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 21.0, best pos: [0.49627495 0.31041293 0.86851546 0.15717401 0.75918063]
+2019-11-25 00:00:02,794 - pyswarms.single.global_best - INFO - Optimize for 10 iters with {'c1': 1.2, 'c2': 1.2, 'w': 0.9}
+2019-11-25 00:00:02,819 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 19.0, best pos: [0.49069827 0.99673304 0.04036309 0.39791624 0.79191465]
+2019-11-25 00:02:51,783 - pyswarms.single.global_best - INFO - Optimize for 10 iters with {'c1': 1.2, 'c2': 1.2, 'w': 0.9}
+2019-11-25 00:02:51,809 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 23.0, best pos: [0.15461902 0.49605037 0.61089111 0.31254206 0.88560091]
+2019-11-25 00:05:59,723 - pyswarms.single.global_best - INFO - Optimize for 10 iters with {'c1': 1.2, 'c2': 1.2, 'w': 0.9}
+2019-11-25 00:05:59,778 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 20.0, best pos: [0.72895104 0.46897386 0.28919514 0.06391519 0.99708345]
+2019-11-25 00:12:17,101 - pyswarms.single.global_best - INFO - Optimize for 10 iters with {'c1': 1.2, 'c2': 1.2, 'w': 0.9}
+2019-11-25 00:12:17,156 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 20.0, best pos: [0.27425099 0.03621643 0.86400247 0.68267712 0.49885038]
+2019-11-25 00:19:12,393 - pyswarms.single.global_best - INFO - Optimize for 10 iters with {'c1': 1.2, 'c2': 1.2, 'w': 0.9}
+2019-11-25 00:19:12,416 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 20.0, best pos: [0.43688105 0.27627189 0.07801477 0.65573518 0.96129484]
+2019-11-25 00:22:13,185 - pyswarms.single.global_best - INFO - Optimize for 10 iters with {'c1': 1.2, 'c2': 1.2, 'w': 0.9}
+2019-11-25 00:22:13,246 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 23.0, best pos: [0.16219827 0.84822419 0.36167252 0.53346016 0.77613957]
+2019-11-25 00:25:20,449 - pyswarms.single.global_best - INFO - Optimize for 10 iters with {'c1': 1.2, 'c2': 1.2, 'w': 0.9}
+2019-11-25 00:25:20,472 - pyswarms.single.global_best - INFO - Optimization finished | best cost: 19.0, best pos: [0.9988648  0.0730294  0.20399388 0.66516081 0.55843432]

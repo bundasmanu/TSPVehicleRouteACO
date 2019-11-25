@@ -142,7 +142,7 @@ def transformToNetworkGraph(graph : Graph.Graph):
         '''
 
         for i in range(len(graph.getNodes())):
-            for j in range(i,len(graph.getNodes()[i].getEdges())):
+            for j in range(len(graph.getNodes()[i].getEdges())):
                 netGraph.add_edge(graph.getNodes()[i].getEdges()[j].getPInicial(),graph.getNodes()[i].getEdges()[j].getPFinal(), weight=graph.getNodes()[i].getEdges()[j].getDistance())
 
         '''
@@ -161,7 +161,7 @@ def main():
     grafo = createGraph()
 
     '''
-        APLICACAO ANT COLONY OPTIMIZATION
+        APLICACAO ANT COLONY OPTIMIZATION--> 1 PROBLEMA
     '''
 
     '''
@@ -193,7 +193,7 @@ def main():
 
 
     '''
-        APLICACAO DO PARTICLE SWARM OPTIMIZATION
+        APLICACAO DO PARTICLE SWARM OPTIMIZATION--> 1 PROBLEMA
     '''
 
     optionsSwarmAlgorithm = {'c1': 1.2, 'c2': 1.2, 'w': 0.9}
@@ -213,10 +213,25 @@ def main():
     tspLibGraph = problem.get_graph()
     print(tspLibGraph.edges(1))
 
+    '''
+        APLICACAO DO ANT COLONY OPTIMIZATION--> 2 PROBLEMA
+    '''
+
     tour= solver.solve(tspLibGraph, colony, gen_size=200, limit=200) #--> 10 formigas por Nodo, e 100 iteracoes
     print(tour.cost)
     print(tour.nodes)
     print(tour.path)
+
+    '''
+        APLICACAO DO ALGORITMO PARTICLE SWARM OPTIMIZATION
+    '''
+
+    convertedGraph = Utils.convertNetworkxToGraphObject(tspLibGraph)
+
+    for i in range(len(convertedGraph.getNodes())) :
+        print("\n"+convertedGraph.getNodes()[i].getName())
+        for j in range(len(convertedGraph.getNodes()[i].getEdges())):
+            print(convertedGraph.getNodes()[i].getEdges()[j].getPInicial()+"\t"+convertedGraph.getNodes()[i].getEdges()[j].getPFinal()+"\n")
 
 
 if __name__ == "__main__":

@@ -14,7 +14,18 @@ def generateRandomNumbers(numberNodes):
     for i in range(numberNodes):
         randomValues.append(random.uniform(k[i],k[i+1]))
 
-    return numpy.random.permutation(randomValues)
+    toShuffle = [randomValues[i] for i in range(1,len(randomValues)-1)]
+    numpy.random.permutation(toShuffle)
+
+    intermidiatte = [toShuffle[i] for i in range(len(toShuffle))]
+
+    intermidiatte = numpy.asarray(intermidiatte)
+    intermidiatte = numpy.random.permutation(intermidiatte)
+
+    for i in range(1,len(randomValues)-1):
+        randomValues[i] = intermidiatte[i-1]
+
+    return randomValues
 
 def initPos(numberParticles, numberNodes):
 
@@ -27,7 +38,7 @@ def initPos(numberParticles, numberNodes):
         for i in range(numberParticles-1):
             initPosArray = numpy.vstack((initPosArray,generateRandomNumbers(numberNodes)))
 
-        return numpy.random.permutation(initPosArray)
+        return initPosArray
     except:
         raise
 

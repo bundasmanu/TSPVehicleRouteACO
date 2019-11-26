@@ -217,10 +217,10 @@ def main():
         APLICACAO DO ANT COLONY OPTIMIZATION--> 2 PROBLEMA
     '''
 
-    tour= solver.solve(tspLibGraph, colony, gen_size=200, limit=200) #--> 10 formigas por Nodo, e 100 iteracoes
-    print(tour.cost)
-    print(tour.nodes)
-    print(tour.path)
+    # tour= solver.solve(tspLibGraph, colony, gen_size=200, limit=200) #--> 10 formigas por Nodo, e 100 iteracoes
+    # print(tour.cost)
+    # print(tour.nodes)
+    # print(tour.path)
 
     '''
         APLICACAO DO ALGORITMO PARTICLE SWARM OPTIMIZATION

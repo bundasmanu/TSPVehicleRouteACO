@@ -196,7 +196,7 @@ def main():
         APLICACAO DO PARTICLE SWARM OPTIMIZATION--> 1 PROBLEMA
     '''
 
-    optionsSwarmAlgorithm = {'c1': 1.6, 'c2': 1.8, 'w': 0.9}
+    optionsSwarmAlgorithm = {'c1': 1.4, 'c2': 0.9, 'w': 0.9}
     dimensions = len(grafo.getNodes())
     limites = (numpy.array([0,0,0,0,0]), numpy.array([1,1,1,1,1]))
     optimizer = ps.single.GlobalBestPSO(n_particles=10, dimensions=dimensions, options=optionsSwarmAlgorithm, bounds=limites)
@@ -228,6 +228,9 @@ def main():
 
     convertedGraph = Utils.convertNetworkxToGraphObject(tspLibGraph)
 
+    nParticles =10000
+    initPosParticles = PSO.initPos(nParticles, len(convertedGraph.getNodes()))
+
     # for i in range(len(convertedGraph.getNodes())) :
     #     print("\n"+convertedGraph.getNodes()[i].getName())
     #     for j in range(len(convertedGraph.getNodes()[i].getEdges())):
@@ -235,9 +238,9 @@ def main():
 
     dimensions = len(convertedGraph.getNodes())
     limites = (numpy.array([0 for i in range(len(convertedGraph.getNodes()))]), numpy.array([1 for i in range(len(convertedGraph.getNodes()))]))
-    optimizer = ps.single.GlobalBestPSO(n_particles=10000, dimensions=dimensions, options=optionsSwarmAlgorithm, bounds=limites)
+    optimizer = ps.single.GlobalBestPSO(n_particles=nParticles, dimensions=dimensions, options=optionsSwarmAlgorithm, bounds=limites, init_pos=initPosParticles)
 
-    cost, pos = optimizer.optimize(PSO.aplicarFuncaoObjetivoTodasParticulas, 500, graph=convertedGraph)
+    cost, pos = optimizer.optimize(PSO.aplicarFuncaoObjetivoTodasParticulas, 1, graph=convertedGraph)
     print(cost)
 
 

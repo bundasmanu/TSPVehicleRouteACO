@@ -1,6 +1,35 @@
 import networkx as nx
 import Graph,Node,Edge
 import numpy
+import random
+
+def generateRandomNumbers(numberNodes):
+
+    valueBetweenValues = getSpaceBetweenNodes(numberNodes)
+
+    k =[(i*valueBetweenValues) for i in range(numberNodes+1)]# GAMA DE VALORES POSSIVEIS PARA CADA CIDADE--> 0--0.05 ('A'), 0.05--0,10('B')
+
+    randomValues = []
+
+    for i in range(numberNodes):
+        randomValues.append(random.uniform(k[i],k[i+1]))
+
+    return numpy.random.permutation(randomValues)
+
+def initPos(numberParticles, numberNodes):
+
+    try:
+
+        valueBetweenValues = getSpaceBetweenNodes(numberNodes)
+
+        initPosArray = generateRandomNumbers(numberNodes)
+
+        for i in range(numberParticles-1):
+            initPosArray = numpy.vstack((initPosArray,generateRandomNumbers(numberNodes)))
+
+        return numpy.random.permutation(initPosArray)
+    except:
+        raise
 
 def valueToPredict(value, numberNodes):
 
